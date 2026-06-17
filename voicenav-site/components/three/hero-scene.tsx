@@ -100,11 +100,11 @@ function SemanticOrb() {
         <mesh>
           <sphereGeometry args={[1.2, 64, 64]} />
           <meshStandardMaterial
-            color="#F5F0E8"
-            emissive="#2563eb"
-            emissiveIntensity={0.25}
-            metalness={0.1}
-            roughness={0.6}
+            color="#2563eb"
+            emissive="#93c5fd"
+            emissiveIntensity={0.2}
+            metalness={0.2}
+            roughness={0.3}
           />
         </mesh>
 
