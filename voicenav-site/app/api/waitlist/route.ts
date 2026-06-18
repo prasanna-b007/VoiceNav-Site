@@ -138,7 +138,7 @@ export async function POST(
     if (!sheetId) {
       console.error("GOOGLE_SHEET_ID environment variable is not set.");
       return NextResponse.json(
-        { success: false, message: "Server configuration error." },
+        { success: false as const, message: "Server configuration error." },
         { status: 500 }
       );
     }
@@ -149,7 +149,7 @@ export async function POST(
     if (isRateLimited(clientIP)) {
       return NextResponse.json(
         {
-          success: false,
+          success: false as const,
           message: "Too many requests. Please try again later.",
         },
         { status: 429 }
@@ -163,7 +163,7 @@ export async function POST(
       body = await request.json();
     } catch {
       return NextResponse.json(
-        { success: false, message: "Invalid request body." },
+        { success: false as const, message: "Invalid request body." },
         { status: 400 }
       );
     }
@@ -175,7 +175,7 @@ export async function POST(
 
     if (!nameValidation.valid) {
       return NextResponse.json(
-        { success: false, message: nameValidation.message },
+        { success: false as const, message: nameValidation.message },
         { status: 400 }
       );
     }
@@ -185,7 +185,7 @@ export async function POST(
 
     if (!emailValidation.valid) {
       return NextResponse.json(
-        { success: false, message: emailValidation.message },
+        { success: false as const, message: emailValidation.message },
         { status: 400 }
       );
     }
@@ -195,7 +195,7 @@ export async function POST(
 
     if (!mobileValidation.valid) {
       return NextResponse.json(
-        { success: false, message: mobileValidation.message },
+        { success: false as const, message: mobileValidation.message },
         { status: 400 }
       );
     }
@@ -227,7 +227,7 @@ export async function POST(
 
       if (emailExists) {
         return NextResponse.json(
-          { success: false, message: "Email already registered." },
+          { success: false as const, message: "Email already registered." },
           { status: 409 }
         );
       }
@@ -248,13 +248,13 @@ export async function POST(
       },
     });
 
-    return NextResponse.json({ success: true }, { status: 200 });
+    return NextResponse.json({ success: true as const }, { status: 200 });
   } catch (error) {
     console.error("Waitlist API error:", error);
 
     // Never expose internal error details to clients
     return NextResponse.json(
-      { success: false, message: "An unexpected error occurred. Please try again." },
+      { success: false as const, message: "An unexpected error occurred. Please try again." },
       { status: 500 }
     );
   }

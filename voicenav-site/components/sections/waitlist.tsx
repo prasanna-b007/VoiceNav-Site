@@ -29,6 +29,7 @@ interface Particle {
   delay: number;
   duration: number;
   angle: number;
+  dist: number;
 }
 
 function generateParticles(count: number): Particle[] {
@@ -51,6 +52,7 @@ function generateParticles(count: number): Particle[] {
     delay: Math.random() * 0.3,
     duration: Math.random() * 0.8 + 0.8,
     angle: (360 / count) * i + (Math.random() - 0.5) * 30,
+    dist: 80 + Math.random() * 60,
   }));
 }
 
@@ -58,7 +60,11 @@ function CelebrationParticles() {
   const [particles, setParticles] = useState<Particle[]>([]);
 
   useEffect(() => {
-    setParticles(generateParticles(24));
+    // Wrap in setTimeout to avoid triggering synchronous cascading renders
+    const timer = setTimeout(() => {
+      setParticles(generateParticles(24));
+    }, 0);
+    return () => clearTimeout(timer);
   }, []);
 
   if (particles.length === 0) return null;
@@ -67,9 +73,8 @@ function CelebrationParticles() {
     <div className="absolute inset-0 pointer-events-none overflow-hidden">
       {particles.map((p) => {
         const rad = (p.angle * Math.PI) / 180;
-        const dist = 80 + Math.random() * 60;
-        const tx = Math.cos(rad) * dist;
-        const ty = Math.sin(rad) * dist;
+        const tx = Math.cos(rad) * p.dist;
+        const ty = Math.sin(rad) * p.dist;
 
         return (
           <motion.div

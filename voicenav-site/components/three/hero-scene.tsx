@@ -9,7 +9,7 @@ function Particles({ count = 60, radius = 2.5 }: { count?: number; radius?: numb
   const meshRef = useRef<THREE.InstancedMesh>(null);
   const dummy = useMemo(() => new THREE.Object3D(), []);
 
-  const positions = useMemo(() => {
+  const [positions] = useState(() => {
     const pos: [number, number, number][] = [];
     for (let i = 0; i < count; i++) {
       const theta = Math.random() * Math.PI * 2;
@@ -22,7 +22,7 @@ function Particles({ count = 60, radius = 2.5 }: { count?: number; radius?: numb
       ]);
     }
     return pos;
-  }, [count, radius]);
+  });
 
   useFrame(({ clock }) => {
     if (!meshRef.current) return;
