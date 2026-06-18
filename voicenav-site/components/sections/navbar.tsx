@@ -3,12 +3,14 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Menu, X } from "lucide-react";
+import { AzuoLogo } from "@/components/ui/logo";
 
 const NAV_LINKS = [
   { label: "Product", href: "#product" },
   { label: "Architecture", href: "#architecture" },
   { label: "Pricing", href: "#pricing" },
   { label: "Docs", href: "#docs" },
+  { label: "Waitlist", href: "#waitlist" },
 ];
 
 export function Navbar() {
@@ -25,8 +27,10 @@ export function Navbar() {
     <nav
       id="navbar"
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "glass-strong shadow-sm"
+        mobileOpen
+          ? "bg-[rgba(249,249,247,0.98)] backdrop-blur-none"
+          : scrolled
+          ? "bg-bg shadow-sm"
           : "bg-transparent"
       }`}
     >
@@ -34,9 +38,10 @@ export function Navbar() {
         {/* Logo */}
         <a
           href="#hero"
-          className="font-[family-name:var(--font-heading)] text-xl font-semibold text-text-primary tracking-tight"
+          className="flex items-center gap-2 font-[family-name:var(--font-heading)] text-xl font-semibold text-text-primary tracking-tight"
         >
-          AZUO <span className="text-accent">VoiceNav</span>
+          <AzuoLogo size={28} />
+          <span>AZUO <span className="text-accent">VoiceNav</span></span>
         </a>
 
         {/* Desktop Links */}
@@ -55,10 +60,10 @@ export function Navbar() {
 
         {/* Desktop CTA */}
         <a
-          href="#pricing"
+          href="#waitlist"
           className="hidden md:inline-flex items-center px-5 py-2 text-sm font-medium text-white bg-accent rounded-full hover:bg-accent-hover transition-all duration-200 hover:scale-[1.03] active:scale-[0.98] shadow-sm hover:shadow-accent"
         >
-          Get Started
+          Join Waitlist
         </a>
 
         {/* Mobile Toggle */}
@@ -80,7 +85,7 @@ export function Navbar() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.25, ease: [0.4, 0, 0.2, 1] }}
-            className="md:hidden glass-strong border-t border-border overflow-hidden"
+            className="md:hidden bg-[rgba(249,249,247,0.98)] border-t border-border overflow-hidden"
           >
             <div className="px-5 py-4 space-y-1">
               {NAV_LINKS.map((link) => (
@@ -94,11 +99,11 @@ export function Navbar() {
                 </a>
               ))}
               <a
-                href="#pricing"
+                href="#waitlist"
                 onClick={() => setMobileOpen(false)}
                 className="block mt-3 text-center py-2.5 text-sm font-medium text-white bg-accent rounded-full hover:bg-accent-hover transition-colors"
               >
-                Get Started
+                Join Waitlist
               </a>
             </div>
           </motion.div>

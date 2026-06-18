@@ -21,7 +21,7 @@ export function Counter({
   className,
 }: CounterProps) {
   const ref = useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-50px" });
+  const isInView = useInView(ref, { once: true, amount: 0, margin: "0px" });
   const count = useMotionValue(0);
   const rounded = useTransform(count, (latest) =>
     decimals > 0 ? latest.toFixed(decimals) : Math.round(latest).toString()

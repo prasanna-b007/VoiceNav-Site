@@ -1,5 +1,6 @@
 import { Navbar } from "@/components/sections/navbar";
 import { Hero } from "@/components/sections/hero";
+import { Waitlist } from "@/components/sections/waitlist";
 import { SemanticPlayground } from "@/components/sections/semantic-playground";
 import { WhyVoiceNav } from "@/components/sections/why-voicenav";
 import { Comparison } from "@/components/sections/comparison";
@@ -17,6 +18,7 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
+        <Waitlist />
         <SemanticPlayground />
         <WhyVoiceNav />
         <Comparison />

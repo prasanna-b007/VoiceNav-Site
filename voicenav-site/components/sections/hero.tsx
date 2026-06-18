@@ -52,14 +52,48 @@ export function Hero() {
               </p>
             </FadeUp>
 
+            {/* Stats Row — above the fold */}
             <FadeUp delay={0.25}>
-              <div className="mt-9 flex flex-wrap gap-4">
+              <div className="mt-8 mb-2 glass rounded-xl p-4 md:p-5">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-0">
+                  {STATS.map((stat, i) => (
+                    <div
+                      key={stat.id}
+                      className={`text-center ${
+                        i < STATS.length - 1
+                          ? "md:border-r md:border-border"
+                          : ""
+                      }`}
+                    >
+                      <div className="text-2xl sm:text-3xl font-bold font-[family-name:var(--font-heading)] text-text-primary">
+                        {stat.value !== null ? (
+                          <Counter
+                            target={stat.value}
+                            prefix={stat.prefix ?? ""}
+                            suffix={stat.suffix}
+                            duration={2}
+                          />
+                        ) : (
+                          stat.display
+                        )}
+                      </div>
+                      <div className="mt-1 text-xs sm:text-sm text-text-muted font-medium">
+                        {stat.label}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </FadeUp>
+
+            <FadeUp delay={0.35}>
+              <div className="mt-6 flex flex-wrap gap-4">
                 <a
-                  href="#product"
+                  href="#waitlist"
                   id="hero-cta-primary"
                   className="inline-flex items-center px-7 py-3.5 text-sm font-semibold text-white bg-accent rounded-full hover:bg-accent-hover transition-all duration-200 hover:scale-[1.03] active:scale-[0.97] shadow-accent"
                 >
-                  Try VoiceNav
+                  Join Waitlist
                 </a>
                 <a
                   href="#docs"
@@ -81,40 +115,6 @@ export function Hero() {
             </FadeUp>
           </div>
         </div>
-
-        {/* Stats Row */}
-        <FadeUp delay={0.4}>
-          <div className="mt-16 md:mt-20 glass rounded-2xl p-6 md:p-8">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-0">
-              {STATS.map((stat, i) => (
-                <div
-                  key={stat.id}
-                  className={`text-center ${
-                    i < STATS.length - 1
-                      ? "md:border-r md:border-border"
-                      : ""
-                  }`}
-                >
-                  <div className="text-3xl sm:text-4xl font-bold font-[family-name:var(--font-heading)] text-text-primary">
-                    {stat.value !== null ? (
-                      <Counter
-                        target={stat.value}
-                        prefix={stat.prefix ?? ""}
-                        suffix={stat.suffix}
-                        duration={2}
-                      />
-                    ) : (
-                      stat.display
-                    )}
-                  </div>
-                  <div className="mt-1.5 text-sm text-text-muted font-medium">
-                    {stat.label}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </FadeUp>
       </div>
     </section>
   );

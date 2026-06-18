@@ -95,7 +95,7 @@ export function SemanticPlayground() {
               />
 
               {/* Example Pills */}
-              <div className="mt-4 flex flex-wrap gap-2">
+              <div className="mt-4 flex flex-wrap gap-2 overflow-hidden">
                 {EXAMPLE_COMMANDS.map((cmd) => (
                   <button
                     key={cmd}
@@ -149,12 +149,12 @@ export function SemanticPlayground() {
                         }`}
                       >
                         {/* Action name */}
-                        <span className="font-[family-name:var(--font-mono)] text-sm text-text-primary font-medium flex-shrink-0">
+                        <span className="font-[family-name:var(--font-mono)] text-sm text-text-primary font-medium flex-1 min-w-0 truncate">
                           {result.action}
                         </span>
 
                         {/* Confidence bar */}
-                        <div className="flex-1 h-2 bg-border rounded-full overflow-hidden mx-2">
+                        <div className="flex-1 h-2 bg-border rounded-full overflow-hidden mx-2 hidden sm:block">
                           <motion.div
                             className={`h-full rounded-full ${style.bar}`}
                             initial={{ width: 0 }}
@@ -170,7 +170,7 @@ export function SemanticPlayground() {
 
                         {/* Badge */}
                         <span
-                          className={`${style.badge} text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full flex-shrink-0`}
+                          className={`${style.badge} text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full flex-shrink-0 whitespace-nowrap`}
                         >
                           {style.label}
                         </span>

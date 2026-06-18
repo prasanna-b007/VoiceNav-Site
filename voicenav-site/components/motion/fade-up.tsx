@@ -25,7 +25,7 @@ export function FadeUp({
       className={className}
       initial={{ opacity: 0, y: distance }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once, margin: "-50px" }}
+      viewport={{ once, amount: 0, margin: "0px" }}
       transition={{
         duration,
         delay,

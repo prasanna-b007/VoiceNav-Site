@@ -6,9 +6,9 @@
 
 :root {
   /* Brand Colors */
-  --color-bg: #F5F0E8;
-  --color-bg-secondary: #EDE6D6;
-  --color-bg-elevated: #FDFAF5;
+  --color-bg: #F9F9F7;
+  --color-bg-secondary: #F2F2F0;
+  --color-bg-elevated: #FFFFFF;
   --color-text-primary: #2C2A35;
   --color-text-secondary: #5C5968;
   --color-text-muted: #8A8694;
@@ -21,7 +21,7 @@
   --color-border: rgba(44, 42, 53, 0.08);
   --color-border-strong: rgba(44, 42, 53, 0.15);
   --color-surface: rgba(255, 255, 255, 0.6);
-  --color-surface-glass: rgba(245, 240, 232, 0.72);
+  --color-surface-glass: rgba(249, 249, 247, 0.72);
 
   /* Confidence Colors */
   --color-execute: #2D8B5F;
@@ -169,7 +169,7 @@ code, pre {
 }
 
 .glass-strong {
-  background: rgba(253, 250, 245, 0.85);
+  background: rgba(249, 249, 247, 0.92);
   backdrop-filter: blur(24px) saturate(200%);
   -webkit-backdrop-filter: blur(24px) saturate(200%);
   border: 1px solid var(--color-border-strong);
